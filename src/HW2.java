@@ -1,5 +1,29 @@
 public class HW2 {
     public static void main(String[] args) {
+        System.out.println(booleanExpression(false, false, false, false));
+        System.out.println(booleanExpression(true, true, true, true));
+        System.out.println(booleanExpression(false, false, true, true));
+        System.out.println(booleanExpression(true, true, false, false));
+        System.out.println(booleanExpression(true, false, false, false));
+        System.out.println(booleanExpression(true, true, true, false));
+        System.out.println(booleanExpression(false, true, true, false));
+        System.out.println(booleanExpression(true, false, false, true));
+
+        System.out.println(leapYearCount(1));
+        System.out.println(leapYearCount(4));
+        System.out.println(leapYearCount(100));
+        System.out.println(leapYearCount(101));
+        System.out.println(leapYearCount(400));
+        System.out.println(leapYearCount(2016));
+
+        System.out.println(doubleExpression(0.1,0.2,0.3));
+        System.out.println(doubleExpression(0.0001,0.0002,0.0003));
+        System.out.println(doubleExpression(0.0001,-0.0002,0.0003));
+
+        System.out.println(flipBit(13, 1));
+        System.out.println(flipBit(13, 2));
+        System.out.println(flipBit(13, 3));
+        System.out.println(flipBit(13, 4));
 
     }
 

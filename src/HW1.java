@@ -1,4 +1,4 @@
-public class HomeWork1 {
+public class HW1 {
     public static void main(String[] args) {
         System.out.println(matchOutcome(1,1,2,2));
         System.out.println(matchOutcome(1,2,3,0));

@@ -1,4 +1,4 @@
-public class HW2 {
+public class SecondHomeWork {
     public static void main(String[] args) {
         System.out.println(booleanExpression(false, false, false, false));
         System.out.println(booleanExpression(true, true, true, true));

@@ -17,11 +17,11 @@ public class HW1 {
         System.out.println(mathPower(-2,2));
     }
 
-    public static int matchOutcome(int team1, int team2, int userRateTeam1, int userRateTeam2) {
-        return ((team1 == userRateTeam1 && team2 == userRateTeam2)) ? 2 :
-                (((team2 - team1 > 0 && userRateTeam2 - userRateTeam1 > 0)
-                        || (team1 - team2 > 0 && userRateTeam1 - userRateTeam2 > 0))
-                        || (team1 == team2 && userRateTeam1 == userRateTeam2)) ? 1 : 0;
+    public static int matchOutcome(int firstTeam, int secondTeam, int userFirstTeam, int userSecondTeam) {
+        return ((firstTeam == userFirstTeam && secondTeam == userSecondTeam)) ? 2 :
+                (((secondTeam - firstTeam > 0 && userSecondTeam - userFirstTeam > 0)
+                        || (firstTeam - secondTeam > 0 && userFirstTeam - userSecondTeam > 0))
+                        || (firstTeam == secondTeam && userFirstTeam == userSecondTeam)) ? 1 : 0;
     }
 
     public static void printAsteriskDiamond(int quantityAsterisks) {

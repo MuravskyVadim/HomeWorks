@@ -17,6 +17,7 @@ public class Application {
                     robot.turnLeft();
                     direction = robot.getDirection();
                 }
+
                 while (toX != x) {
                     robot.stepForward();
                     x = robot.getX();
@@ -26,6 +27,7 @@ public class Application {
                     robot.turnLeft();
                     direction = robot.getDirection();
                 }
+
                 while (toX != x) {
                     robot.stepForward();
                     x = robot.getX();
@@ -37,6 +39,7 @@ public class Application {
                     robot.turnLeft();
                     direction = robot.getDirection();
                 }
+
                 while (toY != y) {
                     robot.stepForward();
                     y = robot.getY();
@@ -46,6 +49,7 @@ public class Application {
                     robot.turnLeft();
                     direction = robot.getDirection();
                 }
+
                 while (toY != y) {
                     robot.stepForward();
                     y = robot.getY();

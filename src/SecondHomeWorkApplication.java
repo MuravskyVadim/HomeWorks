@@ -1,4 +1,6 @@
 public class SecondHomeWorkApplication {
+    private static final double ACCURACY = 0.0001;
+
     public static void main(String[] args) {
         System.out.println(booleanExpression(false, false, false, false));
         System.out.println(booleanExpression(true, true, true, true));
@@ -23,7 +25,7 @@ public class SecondHomeWorkApplication {
     }
 
     public static boolean booleanExpression(boolean a, boolean b, boolean c, boolean d) {
-        return ((a ^ b) & (c ^ d)) | ((a ^ c) & (b ^ d));
+        return ((a ^ b) && (c ^ d)) || ((a ^ c) && (b ^ d));
     }
 
     public static int leapYearCount(int year) {
@@ -31,7 +33,7 @@ public class SecondHomeWorkApplication {
     }
 
     public static boolean doubleExpression(double a, double b, double c) {
-        return Math.abs((a + b) - c) <= 0.0001;
+        return Math.abs((a + b) - c) <= ACCURACY;
     }
 
     public static int flipBit(int value, int bitIndex) {

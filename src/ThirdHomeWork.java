@@ -68,10 +68,12 @@ public class ThirdHomeWork {
                 if (textLines[j].startsWith(role)) {
                     result.append("\n").append(j + 1).append(") ").append(textLines[j].substring(role.length() + 1));
                 }
+
                 if (j == textLines.length - 1 && i != roles.length - 1) {
                     result.append("\n");
                 }
             }
+
             if (i < roles.length - 1) {
                 result.append("\n");
             }

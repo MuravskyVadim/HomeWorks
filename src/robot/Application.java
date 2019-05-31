@@ -3,15 +3,15 @@ package robot;
 public class Application {
     public static void main(String[] args) {
         Robot robot = new Robot();
-        moveRobot(robot, 3,6);
-        System.out.println(robot.getX() + ", " + robot.getY()+ " direction " + robot.getDirection());
+        moveRobot(robot, 3, 6);
+        System.out.println(robot.getX() + ", " + robot.getY() + " direction " + robot.getDirection());
     }
 
     public static void moveRobot(Robot robot, int toX, int toY) {
         Direction direction = robot.getDirection();
         int x = robot.getX();
         int y = robot.getY();
-        if(toX > -1 && toY > -1) {
+        if (toX > -1 && toY > -1) {
             if (toX > robot.getX()) {
                 while (direction != Direction.RIGHT) {
                     robot.turnLeft();

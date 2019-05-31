@@ -77,13 +77,13 @@ public class Robot {
             case DOWN:
                 int y = getY();
                 if (y > 0) {
-                    setY(y - 1);
+                    setY(--y);
                 }
                 break;
             case LEFT:
                 int x = getX();
                 if (x > 0) {
-                    setX(x - 1);
+                    setX(++x);
                 }
                 break;
             case RIGHT:

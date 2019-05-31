@@ -30,7 +30,7 @@ public final class ComplexNumber {
     @Override
     public int hashCode() {
         int result;
-        result = (int) (31 * getRe() + 23 * getIm());
+        result = (int) (31 * getRe() + 31 * getIm());
         return result;
     }
 }

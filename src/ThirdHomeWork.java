@@ -2,6 +2,7 @@ public class ThirdHomeWork {
     public static void main(String[] args) {
         int[] a = {0, 2, 2, 3, 4, 4, 6};
         int[] b = {1, 23, 278};
+
         for (int i : mergeArrays(a, b)) {
             System.out.print(i + " ");
         }
@@ -31,6 +32,7 @@ public class ThirdHomeWork {
         int arrayLength = firstArray.length + secondArray.length;
         int[] resultArray = new int[arrayLength];
         int i = 0, j = 0, k = 0;
+
         while (i < firstArray.length || j < secondArray.length) {
             if (i < firstArray.length && j < secondArray.length) {
                 if (firstArray[i] < secondArray[j]) {
@@ -57,9 +59,11 @@ public class ThirdHomeWork {
 
     private static String printTextPerRole(String[] roles, String[] textLines) {
         StringBuilder result = new StringBuilder();
+
         for (int i = 0; i < roles.length; i++) {
             String role = roles[i] + ":";
             result.append(role);
+
             for (int j = 0; j < textLines.length; j++) {
                 if (textLines[j].startsWith(role)) {
                     result.append("\n").append(j + 1).append(") ").append(textLines[j].substring(role.length() + 1));

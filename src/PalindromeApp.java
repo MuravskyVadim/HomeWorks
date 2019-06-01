@@ -9,27 +9,13 @@ public class PalindromeApp {
     }
 
     public static boolean isPalindrome(String text) {
-        Pattern p = Pattern.compile("[a-zA-Z0-9]");
-        Matcher m = p.matcher(text);
-        StringBuilder textWithoutSymbols = new StringBuilder();
+        StringBuilder stringWithoutSymbols = new StringBuilder(text.replaceAll("[^a-zA-Z0-9]", ""));
+        int middleString = stringWithoutSymbols.length() / 2;
+        String firstPart = stringWithoutSymbols.substring(0, middleString);
+        StringBuilder secondPart = new StringBuilder(
+                stringWithoutSymbols.substring(stringWithoutSymbols.length() % 2 + middleString));
 
-        while (m.find()) {
-            textWithoutSymbols.append(text.substring(m.start(), m.end()));
-        }
-
-        String textLowerCase = textWithoutSymbols.toString().toLowerCase();
-        String firstPart;
-        StringBuilder secondPart;
-
-        if (textLowerCase.length() % 2 == 0) {
-            firstPart = textLowerCase.substring(0, textLowerCase.length() / 2);
-            secondPart = new StringBuilder(textLowerCase.substring(textLowerCase.length() / 2));
-        } else {
-            firstPart = textLowerCase.substring(0, textLowerCase.length() / 2);
-            secondPart = new StringBuilder(textLowerCase.substring(textLowerCase.length() / 2 + 1));
-        }
-
-        if (firstPart.equals(secondPart.reverse().toString())) {
+        if (firstPart.equalsIgnoreCase(secondPart.reverse().toString())) {
             return true;
         }
         return false;

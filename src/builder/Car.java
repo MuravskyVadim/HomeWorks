@@ -8,11 +8,21 @@ public class Car {
     private double horsePower;
     private double torque;
 
+    private Car(String carType, String model, String engineType, double weight, double horsePower, double torque) {
+        this.carType = carType;
+        this.model = model;
+        this.engineType = engineType;
+        this.weight = weight;
+        this.horsePower = horsePower;
+        this.torque = torque;
+    }
+
     public static class Builder {
         private Car newCar;
 
         public Builder() {
-            this.newCar = new Car();
+            this.newCar = new Car("sedan", "Opel", "petrol",
+                    1350, 105, 120);
         }
 
         public Builder buildWithCarType(String carType) {

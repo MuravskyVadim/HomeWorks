@@ -5,6 +5,7 @@ public class Robot {
     private int y;
     private Direction direction;
 
+
     public Robot() {
         this.x = 0;
         this.y = 0;

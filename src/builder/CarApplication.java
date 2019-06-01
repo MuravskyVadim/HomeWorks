@@ -18,6 +18,5 @@ public class CarApplication {
                 .buildWithHorsePower(365)
                 .buildWithTorque(550).build();
         System.out.println(car2.toString());
-
     }
 }

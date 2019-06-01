@@ -6,7 +6,7 @@ class TooLongTextAnalyzer implements TextAnalyzer {
     public TooLongTextAnalyzer(int maxLength) {
         if (maxLength > 0) {
             this.maxLength = maxLength;
-        }else {
+        } else {
             System.out.println("The length of the text must be > 0");
         }
     }

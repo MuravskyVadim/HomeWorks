@@ -9,6 +9,7 @@ public class FactorialApp {
 
     public static BigInteger factorial(int value) {
         BigInteger result = BigInteger.ONE;
+
         for (int i = 2; i <= value; i++) {
             result = result.multiply(BigInteger.valueOf(i)) ;
         }

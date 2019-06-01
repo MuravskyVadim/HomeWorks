@@ -32,7 +32,6 @@ public class PalindromeApp {
         if (firstPart.equals(secondPart.reverse().toString())) {
             return true;
         }
-
         return false;
     }
 }

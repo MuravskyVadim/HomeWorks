@@ -1,7 +1,7 @@
 public class AsciiCharSequence implements java.lang.CharSequence {
     private byte[] byteArray;
 
-    public AsciiCharSequence(byte[] byteArray) {
+    private AsciiCharSequence(byte[] byteArray) {
         this.byteArray = byteArray;
     }
 
@@ -18,6 +18,7 @@ public class AsciiCharSequence implements java.lang.CharSequence {
     @Override
     public CharSequence subSequence(int start, int end) {
         byte[] tempArray;
+
         if(end > start){
             tempArray = new byte[end - start];
         }else {
@@ -27,7 +28,6 @@ public class AsciiCharSequence implements java.lang.CharSequence {
         for (int i = 0; start < end; i++, start++) {
             tempArray[i] = byteArray[start];
         }
-
         return new AsciiCharSequence(tempArray);
     }
 

@@ -21,8 +21,7 @@ public class Car {
         private Car newCar;
 
         public Builder() {
-            this.newCar = new Car("sedan", "Opel", "petrol",
-                    1350, 105, 120);
+            this.newCar = new Car("sedan", "Opel", "petrol",1350, 105, 120);
         }
 
         public Builder buildWithCarType(String carType) {

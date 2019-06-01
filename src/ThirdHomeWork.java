@@ -31,9 +31,11 @@ public class ThirdHomeWork {
     public static int[] mergeArrays(int[] firstArray, int[] secondArray) {
         int arrayLength = firstArray.length + secondArray.length;
         int[] resultArray = new int[arrayLength];
-        int i = 0, j = 0, k = 0;
+        int i = 0;
+        int j = 0;
+        int k = 0;
 
-        while (i < firstArray.length || j < secondArray.length) {
+        while (i + j < arrayLength) {
             if (i < firstArray.length && j < secondArray.length) {
                 if (firstArray[i] < secondArray[j]) {
                     resultArray[k] = firstArray[i];

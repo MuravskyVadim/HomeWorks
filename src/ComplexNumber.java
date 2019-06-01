@@ -18,6 +18,7 @@ public final class ComplexNumber {
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
+
         if (obj instanceof ComplexNumber) {
             ComplexNumber complexNumber = (ComplexNumber) obj;
 

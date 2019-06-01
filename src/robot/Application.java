@@ -4,7 +4,6 @@ public class Application {
     public static void main(String[] args) {
         Robot robot = new Robot();
         moveRobot(robot, 3, 6);
-
         System.out.println(robot.getX() + ", " + robot.getY() + " direction " + robot.getDirection());
     }
 

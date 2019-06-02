@@ -23,11 +23,11 @@ public class RobotApplication {
                 connection = true;
             } catch (RobotConnectionException e) {
                 e.getMessage();
-            }finally {
-                if(robotConnection != null){
+            } finally {
+                if (robotConnection != null) {
                     try {
                         robotConnection.close();
-                    }catch (RobotConnectionException e){
+                    } catch (RobotConnectionException e) {
                         e.getMessage();
                     }
                 }

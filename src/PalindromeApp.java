@@ -6,15 +6,7 @@ public class PalindromeApp {
     }
 
     public static boolean isPalindrome(String text) {
-        StringBuilder stringWithoutSymbols = new StringBuilder(text.replaceAll("[^a-zA-Z0-9]", ""));
-        int middleString = stringWithoutSymbols.length() / 2;
-        String firstPart = stringWithoutSymbols.substring(0, middleString);
-        StringBuilder secondPart = new StringBuilder(
-                stringWithoutSymbols.substring(stringWithoutSymbols.length() % 2 + middleString));
-
-        if (firstPart.equalsIgnoreCase(secondPart.reverse().toString())) {
-            return true;
-        }
-        return false;
+        String temp = text.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+        return temp.equals(new StringBuffer(temp).reverse().toString());
     }
 }

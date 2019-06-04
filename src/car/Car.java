@@ -1,6 +1,11 @@
 package car;
 
-import java.io.*;
+import java.io.ByteArrayOutputStream;
+import java.io.ByteArrayInputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.io.IOException;
 
 public class Car implements Cloneable, Serializable {
     private String model;
@@ -47,23 +52,30 @@ public class Car implements Cloneable, Serializable {
     }
 
     public Object deepClone() {
+        ByteArrayOutputStream byteArrayOutputStream;
+        ObjectOutputStream objectOutputStream = null;
         ByteArrayInputStream byteArrayInputStream;
         ObjectInputStream objectInputStream;
         Object cloneObject = null;
 
         try {
-            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
-
+            byteArrayOutputStream = new ByteArrayOutputStream();
+            objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
             objectOutputStream.writeObject(this);
-            objectOutputStream.close();
 
             byteArrayInputStream = new ByteArrayInputStream(byteArrayOutputStream.toByteArray());
             objectInputStream = new ObjectInputStream(byteArrayInputStream);
-
             cloneObject = objectInputStream.readObject();
         } catch (ClassNotFoundException | IOException e) {
             e.printStackTrace();
+        } finally {
+            if (objectOutputStream != null) {
+                try {
+                    objectOutputStream.close();
+                } catch (IOException e) {
+                    System.out.println("ObjectOutputStream not closed");
+                }
+            }
         }
         return cloneObject;
     }

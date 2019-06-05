@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Storage<K, V> {
     private static final int ARRAY_LENGTH = 3;
     private K[] keysArray;
@@ -24,9 +26,8 @@ public class Storage<K, V> {
                     keysArray[i] = key;
                     valuesArray[i] = value;
                     break;
-                }else if(i == keysArray.length-1){
+                } else if (i == keysArray.length - 1) {
                     increaseSize();
-                    i = 0;
                 }
             }
         }
@@ -34,15 +35,7 @@ public class Storage<K, V> {
 
     public void increaseSize() {
         int newArrayLength = keysArray.length + (keysArray.length >> 1);
-        K[] newK = (K[]) new Object[newArrayLength];
-        V[] newV = (V[]) new Object[newArrayLength];
-
-        for (int i = 0; i < keysArray.length; i++) {
-            newK[i] = keysArray[i];
-            newV[i] = valuesArray[i];
-        }
-
-        keysArray = newK;
-        valuesArray = newV;
+        keysArray = Arrays.copyOf(keysArray, newArrayLength);
+        valuesArray = Arrays.copyOf(valuesArray, newArrayLength);
     }
 }

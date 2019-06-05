@@ -15,7 +15,7 @@ class Pair<T, K> {
         return secondParameter;
     }
 
-    public static <T, K> Pair<T, K> of(T firstParameter, K secondParameter) {
+    public static <T, K> Pair of(T firstParameter, K secondParameter) {
         return new Pair<>(firstParameter, secondParameter);
     }
 

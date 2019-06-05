@@ -6,12 +6,12 @@ public class StorageApp {
         storage.put(32, "Jack");
         storage.put(12, "Mike");
         storage.put(65, "Nick");
-        storage.put(66, "Tom");
+        storage.put(65, "Tom");
 
         System.out.println(storage.get(12));
         System.out.println(storage.get(32));
         System.out.println(storage.get(72));
         System.out.println(storage.get(65));
-        System.out.println(storage.get(66));
+        System.out.println(storage.get(65));
     }
 }

@@ -31,5 +31,10 @@ public class ArrayListApp {
         for (int i = 0; i < arrayList.size(); i++) {
             System.out.println(arrayList.get(i));
         }
+
+        System.out.println("++++++++++++++++++++++++++");
+        ArrayList<String> arrayList1 = new ArrayList<>();
+        System.out.println(arrayList1.size());
+        System.out.println(arrayList1.remove("one"));
     }
 }

@@ -4,17 +4,14 @@ import java.util.Arrays;
 
 public class ArrayList<T> implements List<T> {
     private int position = 0;
-    private boolean checkIsEmpty;
     private T[] array;
 
     public ArrayList() {
-        checkIsEmpty = true;
-        array = (T[]) new Object[2];
+        array = (T[]) new Object[10];
     }
 
     @Override
     public void add(T value) {
-        checkIsEmpty = false;
         if (position < array.length) {
             array[position] = value;
             position++;
@@ -28,92 +25,83 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public void add(T value, int index) {
-        checkIsEmpty = false;
-        if (index < array.length && index > -1) {
-            array[index] = value;
+        try {
+            T[] tempArray = (T[]) new Object[array.length + 1];
+            System.arraycopy(array, 0, tempArray, 0, index);
+            tempArray[index] = value;
+            System.arraycopy(array, index, tempArray, index + 1, array.length - index);
+            array = tempArray;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public void addAll(List<T> list) {
-        checkIsEmpty = false;
-        int newArrayLength = array.length + list.size();
-        array = Arrays.copyOf(array, newArrayLength);
-
-        for (int i = 0, j = 0; i < array.length; i++) {
-            if (array[i] == null) {
-                array[i] = list.get(j);
-                j++;
-            }
+        for (int i = 0; i < list.size(); i++) {
+            add(list.get(i));
         }
     }
 
     @Override
     public T get(int index) {
-        if (index < array.length && index > -1 && array[index] != null) {
+        try {
             return array[index];
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     @Override
     public void set(T value, int index) {
-        checkIsEmpty = false;
-        if (index < array.length && index > -1) {
+        try {
             array[index] = value;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
     }
 
     @Override
     public T remove(int index) {
-        if (index < array.length && index > -1) {
+        try {
             T t = array[index];
-            T[] tempArray = array;
-            array = (T[]) new Object[tempArray.length - 1];
-
-            for (int i = 0, j = 0; i <= array.length; i++) {
-                if (i != index) {
-                    array[j] = tempArray[i];
-                    j++;
-                }
-            }
+            T[] tempArray = (T[]) new Object[array.length - 1];
+            System.arraycopy(array, 0, tempArray, 0, index);
+            System.arraycopy(array, index + 1, tempArray, index, array.length - index - 1);
+            array = tempArray;
             return t;
+        } catch (IndexOutOfBoundsException e) {
+            e.printStackTrace();
         }
         return null;
     }
 
     @Override
     public T remove(T t) {
-        int index = -1;
-        if (t != null) {
-            for (int i = 0; i < array.length; i++) {
-                if (array[i] == t) {
-                    index = i;
-                    break;
-                }
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] == t) {
+                remove(i);
+                return t;
             }
-
-            T[] tempArray = array;
-            array = (T[]) new Object[tempArray.length - 1];
-
-            for (int i = 0, j = 0; i <= array.length; i++) {
-                if (i != index) {
-                    array[j] = tempArray[i];
-                    j++;
-                }
-            }
-            return t;
         }
         return null;
     }
 
     @Override
     public int size() {
-        return array.length;
+        int count = 0;
+
+        for (T t : array) {
+            if (t != null) {
+                count++;
+            }
+        }
+        return count;
     }
 
     @Override
     public boolean isEmpty() {
-        return checkIsEmpty;
+        return position == 0;
     }
 }

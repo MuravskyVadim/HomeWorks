@@ -12,6 +12,9 @@ public class LinkedListApp {
         linkedList.add(100);
         linkedList.add(120);
         linkedList.add(130);
+
+        linkedList.add(111, 2);
+
         for (int i = 0; i < linkedList.size(); i++) {
             System.out.println(linkedList.get(i));
         }
@@ -26,7 +29,20 @@ public class LinkedListApp {
 
         linkedList.addAll(linkedList1);
 
-        linkedList.add(111, 2);
+        for (int i = 0; i < linkedList.size(); i++) {
+            System.out.println(linkedList.get(i));
+        }
+
+        System.out.println("+++++++++++++++++++");
+
+        linkedList.remove(11);
+
+        for (int i = 0; i < linkedList.size(); i++) {
+            System.out.println(linkedList.get(i));
+        }
+
+        System.out.println("------------------");
+        linkedList.remove(Integer.valueOf(555));
 
         for (int i = 0; i < linkedList.size(); i++) {
             System.out.println(linkedList.get(i));

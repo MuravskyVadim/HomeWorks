@@ -50,11 +50,14 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void add(T value) {
         if (size == 0) {
-            node = first = last = new Node(null, value, null);
+            node = new Node(null, value, null);
+            first = node;
+            last = node;
         } else {
             prev = node;
             node = new Node(prev, value, null);
             prev.setNext(node);
+            last = node;
         }
         size++;
     }
@@ -69,8 +72,9 @@ public class LinkedList<T> implements List<T> {
                 node = new Node<>(necessaryNode.getPrev(), value, necessaryNode);
                 necessaryNode.setPrev(node);
                 getNodeByIndex(index - 1).setNext(node);
+                node = last;
+                size++;
             }
-            size++;
         } else {
             throw new IndexOutOfBoundsException();
         }
@@ -79,8 +83,10 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void addAll(List<T> list) {
-        for (int i = 0; i < list.size(); i++) {
-            this.add(list.get(i));
+        if (!list.isEmpty()) {
+            for (int i = 0; i < list.size(); i++) {
+                add(list.get(i));
+            }
         }
     }
 
@@ -116,19 +122,70 @@ public class LinkedList<T> implements List<T> {
         return size == 0;
     }
 
+    @Override
+    public T remove(int index) {
+        if (index < size - 1 && index > 0) {
+            Node<T> prevNode = getNodeByIndex(index - 1);
+            Node<T> currentNode = getNodeByIndex(index);
+            Node<T> nextNode = getNodeByIndex(index + 1);
+
+            prevNode.setNext(currentNode.getNext());
+            nextNode.setPrev(currentNode.getPrev());
+
+            size--;
+            return currentNode.getElement();
+        } else if (index == 0) {
+            Node<T> currentNode = getNodeByIndex(index);
+            Node<T> nextNode = getNodeByIndex(index + 1);
+
+            nextNode.setPrev(null);
+            first = nextNode;
+
+            size--;
+            return currentNode.getElement();
+        } else if (index == size - 1) {
+            Node<T> currentNode = getNodeByIndex(index);
+            Node<T> prevNode = getNodeByIndex(index - 1);
+
+            prevNode.setNext(null);
+            last = prevNode;
+
+            size--;
+            return currentNode.getElement();
+        }
+        throw new IndexOutOfBoundsException();
+    }
+
+    @Override
+    public T remove(T t) {
+        if (t != null) {
+            for (int i = 0; i < size; i++) {
+                if (t.equals(getNodeByIndex(i).getElement())) {
+                    remove(i);
+                    return t;
+                }
+            }
+        }
+        return null;
+    }
+
     private Node<T> getNodeByIndex(int index) {
-        if (index < (size >> 1)) {
-            Node<T> node = first;
-            for (int i = 0; i < index; i++) {
-                node = node.getNext();
+        if (index > -1 && index < size) {
+            if (index < (size >> 1)) {
+                Node<T> node = first;
+                for (int i = 0; i < index; i++) {
+                    node = node.getNext();
+                }
+                return node;
+            } else {
+                Node<T> node = last;
+                for (int i = size - 1; i > index; i--) {
+                    node = node.getPrev();
+                }
+                return node;
             }
-            return node;
         } else {
-            Node<T> node = last;
-            for (int i = size - 1; i > index; i--) {
-                node = node.getPrev();
-            }
-            return node;
+            throw new IndexOutOfBoundsException();
         }
     }
 }

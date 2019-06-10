@@ -11,6 +11,10 @@ public interface List<T> {
 
     void set(T value, int index);
 
+    T remove(int index);
+
+    T remove(T t);
+
     int size();
 
     boolean isEmpty();

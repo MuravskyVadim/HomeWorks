@@ -64,7 +64,6 @@ public class LinkedList<T> implements List<T> {
                 node = node.getNext();
             }
             return node.getElement();
-
         } else {
             throw new IndexOutOfBoundsException();
         }

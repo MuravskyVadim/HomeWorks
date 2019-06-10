@@ -17,18 +17,16 @@ public class LinkedListApp {
         }
 
         System.out.println("============");
+        System.out.println("The LinkedList is Empty? " + linkedList.isEmpty());
+
+        LinkedList<Integer> linkedList1 = new LinkedList<>();
+        linkedList1.add(11);
+        linkedList1.add(22);
+        linkedList1.add(33);
+
+        linkedList.addAll(linkedList1);
 
         linkedList.add(111, 2);
-
-//        System.out.println("The LinkedList is Empty? " + linkedList.isEmpty());
-//
-//        LinkedList<Integer> linkedList1 = new LinkedList<>();
-//
-//        linkedList1.add(11);
-//        linkedList1.add(22);
-//        linkedList1.add(33);
-//
-//        linkedList.addAll(linkedList1);
 
         for (int i = 0; i < linkedList.size(); i++) {
             System.out.println(linkedList.get(i));

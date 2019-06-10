@@ -7,6 +7,42 @@ public class LinkedList<T> implements List<T> {
     private Node<T> first;
     private Node<T> last;
 
+    private class Node<T> {
+        private Node<T> prev;
+        private Node<T> next;
+        private T element;
+
+        public Node(Node<T> prev, T element, Node<T> next) {
+            this.prev = prev;
+            this.next = next;
+            this.element = element;
+        }
+
+        public Node<T> getPrev() {
+            return prev;
+        }
+
+        public void setPrev(Node<T> prev) {
+            this.prev = prev;
+        }
+
+        public Node<T> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<T> next) {
+            this.next = next;
+        }
+
+        public T getElement() {
+            return element;
+        }
+
+        public void setElement(T element) {
+            this.element = element;
+        }
+    }
+
     public LinkedList() {
         this.size = 0;
     }
@@ -15,16 +51,10 @@ public class LinkedList<T> implements List<T> {
     public void add(T value) {
         if (size == 0) {
             node = first = last = new Node(null, value, null);
-        } else if (size == 1) {
-            prev = node;
-            node = new Node(prev, value, null);
-            first.setNext(node);
-            last = node;
         } else {
             prev = node;
             node = new Node(prev, value, null);
             prev.setNext(node);
-            last = node;
         }
         size++;
     }
@@ -33,14 +63,12 @@ public class LinkedList<T> implements List<T> {
     public void add(T value, int index) {
         if (index > -1 && index <= size) {
             if (index == size) {
-                this.add(value);
+                add(value);
             } else {
                 Node<T> necessaryNode = getNodeByIndex(index);
-                prev = necessaryNode.getPrev();
-                node = new Node<>(prev, value, necessaryNode);
+                node = new Node<>(necessaryNode.getPrev(), value, necessaryNode);
                 necessaryNode.setPrev(node);
-                Node<T> prevNode = getNodeByIndex(index - 1);
-                prevNode.setNext(node);
+                getNodeByIndex(index - 1).setNext(node);
             }
             size++;
         } else {

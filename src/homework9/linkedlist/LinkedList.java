@@ -125,18 +125,19 @@ public class LinkedList<T> implements List<T> {
     @Override
     public T remove(int index) {
         if (index < size - 1 && index > 0) {
-            Node<T> prevNode = getNodeByIndex(index - 1);
             Node<T> currentNode = getNodeByIndex(index);
-            Node<T> nextNode = getNodeByIndex(index + 1);
+            Node<T> prevNode = currentNode.getPrev();
+            Node<T> nextNode = currentNode.getNext();
 
-            prevNode.setNext(currentNode.getNext());
-            nextNode.setPrev(currentNode.getPrev());
-
+            prevNode.setNext(nextNode);
+            nextNode.setPrev(prevNode);
+            currentNode.setPrev(null);
+            currentNode.setNext(null);
             size--;
             return currentNode.getElement();
         } else if (index == 0) {
             Node<T> currentNode = getNodeByIndex(index);
-            Node<T> nextNode = getNodeByIndex(index + 1);
+            Node<T> nextNode = currentNode.getNext();
 
             nextNode.setPrev(null);
             first = nextNode;
@@ -145,7 +146,7 @@ public class LinkedList<T> implements List<T> {
             return currentNode.getElement();
         } else if (index == size - 1) {
             Node<T> currentNode = getNodeByIndex(index);
-            Node<T> prevNode = getNodeByIndex(index - 1);
+            Node<T> prevNode = currentNode.getPrev();
 
             prevNode.setNext(null);
             last = prevNode;

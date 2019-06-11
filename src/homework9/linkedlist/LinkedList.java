@@ -43,12 +43,12 @@ public class LinkedList<T> implements List<T> {
     }
 
     public LinkedList() {
-        this.size = 0;
+        size = 0;
     }
 
     @Override
     public void add(T value) {
-        node = new Node(node, value, null);
+        node = new Node<>(node, value, null);
 
         if (size == 0) {
             first = node;
@@ -70,13 +70,11 @@ public class LinkedList<T> implements List<T> {
                 node = new Node<>(necessaryNode.getPrev(), value, necessaryNode);
                 necessaryNode.setPrev(node);
                 getNodeByIndex(index - 1).setNext(node);
-                node = last;
                 size++;
             }
         } else {
             throw new IndexOutOfBoundsException();
         }
-
     }
 
     @Override
@@ -96,18 +94,16 @@ public class LinkedList<T> implements List<T> {
                 node = node.getNext();
             }
             return node.getElement();
-        } else {
-            throw new IndexOutOfBoundsException();
         }
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
     public void set(T value, int index) {
         if (index > -1 && index < size) {
             getNodeByIndex(index).setElement(value);
-        } else {
-            throw new IndexOutOfBoundsException();
         }
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
@@ -183,8 +179,7 @@ public class LinkedList<T> implements List<T> {
                 }
                 return node;
             }
-        } else {
-            throw new IndexOutOfBoundsException();
         }
+        throw new IndexOutOfBoundsException();
     }
 }

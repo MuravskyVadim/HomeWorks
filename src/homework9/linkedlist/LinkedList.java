@@ -1,13 +1,12 @@
 package homework9.linkedlist;
 
 public class LinkedList<T> implements List<T> {
-    private Node<T> node;
+    private Node<T> node = null;
     private int size;
-    private Node<T> prev;
     private Node<T> first;
     private Node<T> last;
 
-    private class Node<T> {
+    private static class Node<T> {
         private Node<T> prev;
         private Node<T> next;
         private T element;
@@ -49,14 +48,13 @@ public class LinkedList<T> implements List<T> {
 
     @Override
     public void add(T value) {
+        node = new Node(node, value, null);
+
         if (size == 0) {
-            node = new Node(null, value, null);
             first = node;
             last = node;
         } else {
-            prev = node;
-            node = new Node(prev, value, null);
-            prev.setNext(node);
+            last.setNext(node);
             last = node;
         }
         size++;

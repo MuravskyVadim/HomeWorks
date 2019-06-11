@@ -36,5 +36,8 @@ public class ArrayListApp {
         ArrayList<String> arrayList1 = new ArrayList<>();
         System.out.println(arrayList1.size());
         System.out.println(arrayList1.remove("one"));
+
+        ArrayList<String> list = new ArrayList();
+        System.out.println(list.get(3));
     }
 }

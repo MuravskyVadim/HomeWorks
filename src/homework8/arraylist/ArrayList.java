@@ -46,17 +46,15 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T get(int index) {
-        try {
+        if (index < size() && index > -1) {
             return array[index];
-        } catch (IndexOutOfBoundsException e) {
-            e.printStackTrace();
         }
-        return null;
+        throw new IndexOutOfBoundsException();
     }
 
     @Override
     public void set(T value, int index) {
-        if (index > position) {
+        if (index > position || index < 0) {
             throw new IndexOutOfBoundsException();
         } else {
             array[index] = value;
@@ -65,7 +63,7 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public T remove(int index) {
-        if (index > position) {
+        if (index > position || index < 0) {
             throw new IndexOutOfBoundsException();
         } else {
             T t = array[index];

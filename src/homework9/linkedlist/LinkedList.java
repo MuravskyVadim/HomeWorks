@@ -118,17 +118,19 @@ public class LinkedList<T> implements List<T> {
             nextNode.setPrev(prevNode);
             currentNode.setPrev(null);
             currentNode.setNext(null);
+            size--;
             return currentNode.getElement();
         } else if (index == 0) {
             nextNode.setPrev(null);
             first = nextNode;
+            size--;
             return currentNode.getElement();
         } else if (index == size - 1) {
             prevNode.setNext(null);
             last = prevNode;
+            size--;
             return currentNode.getElement();
         }
-        size--;
         throw new NoSuchElementException();
     }
 
@@ -136,7 +138,7 @@ public class LinkedList<T> implements List<T> {
     public T remove(T t) {
         if (t != null) {
             for (int i = 0; i < size; i++) {
-                if (t.equals(getNodeByIndex(i).getElement())) {
+                if (t.equals(get(i))) {
                     remove(i);
                     return t;
                 }

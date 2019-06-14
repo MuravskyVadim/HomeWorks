@@ -5,7 +5,7 @@ import java.util.NoSuchElementException;
 public class HashMap<K, V> {
     private static final int INITIAL_SIZE = 16;
     private static final float LOAD_FACTOR = 0.75f;
-    private static int size = 0;
+    private int size = 0;
     private Entry<K, V>[] entries;
 
     private static class Entry<K, V> {
@@ -20,6 +20,10 @@ public class HashMap<K, V> {
 
         public K getKey() {
             return key;
+        }
+
+        public void setKey(K key) {
+            this.key = key;
         }
 
         public V getValue() {
@@ -47,12 +51,17 @@ public class HashMap<K, V> {
             entries[index] = newEntry;
         } else {
             Entry<K, V> entry = entries[index];
-            if ((key == null && entry.getKey() == null) || entry.getKey().equals(key)) {
+            if (key == null) {
+                if (entry.getKey() == null) {
+                    entry.setValue(value);
+                    return;
+                }
+            }
+
+            if(entry.getKey().equals(key)){
                 entry.setValue(value);
                 return;
             }
-
-            entry = entry.entryNext;
 
             while ((entry) != null) {
                 if (entry.entryNext.getKey().equals(key)) {

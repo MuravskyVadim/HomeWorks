@@ -19,14 +19,11 @@ public class SequenceInReverseOrderApp {
     private static void sequenceInReverseOrder(String[] strings) {
         ArrayDeque<Integer> deque = new ArrayDeque<>();
 
-        for (int i = 0; i < strings.length; i++) {
+        for (int i = strings.length - 1; i >= 0; i--) {
             if (i % 2 != 0) {
                 deque.add(Integer.parseInt(strings[i]));
+                System.out.print(i == 1 ? deque.pollFirst() : deque.pollFirst() + " ");
             }
-        }
-
-        while (!deque.isEmpty()) {
-            System.out.print((deque.size() == 1) ? deque.pollLast() : deque.pollLast() + " ");
         }
     }
 }

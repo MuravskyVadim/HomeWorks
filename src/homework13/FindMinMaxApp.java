@@ -22,8 +22,9 @@ public class FindMinMaxApp {
 
         List<T> list = stream.collect(Collectors.toList());
         if (list.size() != 0) {
-            T min = list.stream().min(order).get();
-            T max = list.stream().max(order).get();
+            list.sort(order);
+            T min = list.get(0);
+            T max = list.get(list.size() - 1);
             minMaxConsumer.accept(min, max);
         } else {
             minMaxConsumer.accept(null, null);

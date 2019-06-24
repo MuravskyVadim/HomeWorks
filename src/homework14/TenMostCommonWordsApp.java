@@ -17,7 +17,7 @@ public class TenMostCommonWordsApp {
 
     public static void tenMostCommonWords(String inputString) {
         Arrays.stream(
-                inputString.toLowerCase().replaceAll("[^0-9a-zа-я]", " ").split("\\s+"))
+                inputString.toLowerCase().split("[^0-9a-zа-я]+"))
                 .collect(Collectors.groupingBy(Function.identity(), counting()))
                 .entrySet()
                 .stream()

@@ -21,10 +21,10 @@ public class FindMinMaxApp {
             BiConsumer<? super T, ? super T> minMaxConsumer) {
 
         List<T> list = stream.collect(Collectors.toList());
+
         if (list.size() != 0) {
-            list.sort(order);
-            T min = list.get(0);
-            T max = list.get(list.size() - 1);
+            T min = list.stream().min(order).get();
+            T max = list.stream().max(order).get();
             minMaxConsumer.accept(min, max);
         } else {
             minMaxConsumer.accept(null, null);

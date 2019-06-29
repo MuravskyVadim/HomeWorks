@@ -1,5 +1,6 @@
 package homework13;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -23,8 +24,8 @@ public class FindMinMaxApp {
         List<T> list = stream.collect(Collectors.toList());
 
         if (list.size() != 0) {
-            T min = list.stream().min(order).get();
-            T max = list.stream().max(order).get();
+            T min = Collections.min(list, order);
+            T max = Collections.max(list, order);
             minMaxConsumer.accept(min, max);
         } else {
             minMaxConsumer.accept(null, null);
